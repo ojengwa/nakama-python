@@ -1,0 +1,91 @@
+GET /healthcheck -- A healthcheck which load balancers can use to check the service.
+
+GET /v2/account -- Fetch the current user's account.
+PUT /v2/account -- Update fields in the current user's account.
+POST /v2/account/authenticate/apple -- Authenticate a user with an Apple ID against the server.
+POST /v2/account/authenticate/custom -- Authenticate a user with a custom id against the server.
+POST "/v2/account/authenticate/device" -- Authenticate a user with a device id against the server.
+POST /v2/account/authenticate/email -- Authenticate a user with an email+password against the server.
+POST /v2/account/authenticate/facebook -- Authenticate a user with a Facebook OAuth token against the server.
+POST /v2/account/authenticate/facebookinstantgame -- Authenticate a user with a Facebook Instant Game token against the server.
+POST /v2/account/authenticate/gamecenter -- Authenticate a user with Apple's GameCenter against the server.
+POST /v2/account/authenticate/google -- Authenticate a user with Google against the server.
+POST /v2/account/authenticate/steam -- Authenticate a user with Steam against the server.
+POST /v2/account/link/apple -- Add an Apple ID to the social profiles on the current user's account.
+POST /v2/account/link/custom -- Add a custom ID to the social profiles on the current user's account.
+POST /v2/account/link/device -- Add a device ID to the social profiles on the current user's account.
+POST /v2/account/link/email -- Add an email+password to the social profiles on the current user's account.
+POST /v2/account/link/facebook -- Add Facebook to the social profiles on the current user's account.
+POST /v2/account/link/facebookinstantgame -- Add Facebook Instant Game to the social profiles on the current user's account.
+POST /v2/account/link/gamecenter -- Add Apple's GameCenter to the social profiles on the current user's account.
+POST /v2/account/link/google -- Add Google to the social profiles on the current user's account.
+POST /v2/account/link/steam -- Add Steam to the social profiles on the current user's account.
+POST /v2/account/unlink/apple -- Remove the Apple ID from the social profiles on the current user's account.
+POST /v2/account/unlink/custom -- Remove the custom ID from the social profiles on the current user's account.
+POST /v2/account/unlink/device -- Remove the device ID from the social profiles on the current user's account.
+POST /v2/account/unlink/email -- Remove the email+password from the social profiles on the current user's account.
+POST /v2/account/unlink/facebook -- Remove Facebook from the social profiles on the current user's account.
+POST /v2/account/unlink/facebookinstantgame -- Remove Facebook Instant Game profile from the social profiles on the current user's account.
+POST /v2/account/unlink/gamecenter -- Remove Apple's GameCenter from the social profiles on the current user's account.
+POST /v2/account/unlink/google -- Remove Google from the social profiles on the current user's account.
+POST /v2/account/unlink/steam -- Remove Steam from the social profiles on the current user's account.
+
+POST /v2/account/session/refresh -- Refresh a user's session using a refresh token retrieved from a previous authentication request.
+POST /v2/session/logout -- Log out a session, invalidate a refresh token, or log out all sessions/refresh tokens for a user.
+
+GET /v2/channel/{channelId} -- List a channel's message history.
+
+POST /v2/event -- Submit an event for processing in the server's registered runtime custom events handler.
+
+DELETE /v2/friend -- Delete one or more users by ID or username.
+GET /v2/friend -- List all friends for the current user.
+POST /v2/friend -- Add friends by ID or username to a user's account.
+POST /v2/friend/block -- Block one or more users by ID or username.
+POST /v2/friend/facebook -- Import Facebook friends and add them to a user's account.
+POST /v2/friend/steam -- Import Steam friends and add them to a user's account.
+
+GET /v2/group -- List groups based on given filters.
+POST /v2/group -- Create a new group with the current user as the owner.
+DELETE /v2/group/{groupId} -- Delete a group by ID.
+PUT /v2/group/{groupId} -- Update fields in a given group.
+POST /v2/group/{groupId}/add -- Add users to a group.
+POST /v2/group/{groupId}/ban -- Ban a set of users from a group.
+POST /v2/group/{groupId}/demote -- Demote a set of users in a group to the next role down.
+POST /v2/group/{groupId}/join -- Immediately join an open group, or request to join a closed one.
+POST /v2/group/{groupId}/kick -- Kick a set of users from a group.
+POST /v2/group/{groupId}/leave -- Leave a group the user is a member of.
+POST /v2/group/{groupId}/promote -- Promote a set of users in a group to the next role up.
+GET /v2/group/{groupId}/user -- List all users that are part of a group.
+
+POST /v2/iap/purchase/apple -- Validate Apple IAP Receipt
+POST /v2/iap/purchase/google -- Validate Google IAP Receipt
+POST /v2/iap/purchase/huawei -- Validate Huawei IAP Receipt
+
+DELETE /v2/leaderboard/{leaderboardId} -- Delete a leaderboard record.
+GET /v2/leaderboard/{leaderboardId} -- List leaderboard records.
+POST /v2/leaderboard/{leaderboardId} -- Write a record to a leaderboard.
+GET /v2/leaderboard/{leaderboardId}/owner/{ownerId} -- List leaderboard records that belong to a user.
+
+GET /v2/match -- Fetch list of running matches.
+
+DELETE /v2/notification -- Delete one or more notifications for the current user.
+GET /v2/notification -- Fetch list of notifications.
+
+---------------? GET /v2/rpc/{id} -- Execute a Lua function on the server.----------------
+POST /v2/rpc/{id} -- Execute a Lua function on the server.
+
+POST /v2/storage -- Get storage objects.
+PUT /v2/storage -- Write objects into the storage engine.
+PUT /v2/storage/delete -- Delete one or more objects by ID or username.
+GET /v2/storage/{collection} -- List publicly readable storage objects in a given collection.
+----? GET /v2/storage/{collection}/{userId} -- List publicly readable storage objects in a given collection.----
+
+GET /v2/tournament -- List current or upcoming tournaments.
+GET /v2/tournament/{tournamentId} -- List tournament records.
+-------------? POST /v2/tournament/{tournamentId} -- Write a record to a tournament.------------
+PUT /v2/tournament/{tournamentId} -- Write a record to a tournament.
+POST /v2/tournament/{tournamentId}/join -- Attempt to join an open and running tournament.
+GET /v2/tournament/{tournamentId}/owner/{ownerId} -- List tournament records for a given owner.
+
+GET /v2/user -- Fetch zero or more users by ID and/or username.
+GET /v2/user/{userId}/group -- List groups the current user belongs to.
