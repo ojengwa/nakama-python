@@ -7,7 +7,7 @@ class Authenticate():
                     vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
@@ -29,7 +29,7 @@ class Authenticate():
     async def device(self, id, vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
@@ -50,7 +50,7 @@ class Authenticate():
     async def custom(self, id, vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
@@ -71,7 +71,7 @@ class Authenticate():
     async def apple(self, token, vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
@@ -93,11 +93,11 @@ class Authenticate():
                        create=None, username=None, import_friends=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
         if import_friends is not None:
-            params['import'] = import_friends
+            params['import'] = import_friends and 'true' or 'false'
 
         body = {
             'token': token
@@ -117,7 +117,7 @@ class Authenticate():
                                     vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
@@ -140,7 +140,7 @@ class Authenticate():
                           vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
@@ -166,7 +166,7 @@ class Authenticate():
     async def google(self, token, vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
@@ -187,7 +187,7 @@ class Authenticate():
     async def steam(self, token, vars=None, create=None, username=None):
         params = {}
         if create is not None:
-            params['create'] = create
+            params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
 
