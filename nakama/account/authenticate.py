@@ -96,6 +96,8 @@ class Authenticate():
             params['create'] = create
         if username is not None:
             params['username'] = username
+        if import_friends is not None:
+            params['import'] = import_friends
 
         body = {
             'token': token
@@ -182,8 +184,7 @@ class Authenticate():
                                                   json=body) as resp:
             return await resp.json()
 
-    async def steam(self, token, vars=None,
-                    create=None, username=None, import_friends=None):
+    async def steam(self, token, vars=None, create=None, username=None):
         params = {}
         if create is not None:
             params['create'] = create
