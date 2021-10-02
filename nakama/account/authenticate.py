@@ -1,4 +1,6 @@
 class Authenticate():
+    # TO DO:
+    # update session when auth
 
     def __init__(self, client):
         self.client = client
