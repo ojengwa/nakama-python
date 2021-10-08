@@ -13,7 +13,7 @@ from .rpc import RPC
 from .session import Session
 from .storage import Storage
 from .tournaments import Tournaments
-from .user import User
+from .users import Users
 
 
 class NakamaClient():
@@ -44,7 +44,7 @@ class NakamaClient():
         self._session = Session(self, server_key)
         self._storage = Storage(self)
         self._tournaments = Tournaments(self)
-        self._user = User(self)
+        self._users = Users(self)
 
     async def close(self):
         await self._http_session.close()
@@ -60,8 +60,8 @@ class NakamaClient():
         return self._account
 
     @property
-    def user(self):
-        return self._user
+    def users(self):
+        return self._users
 
     @property
     def session(self):
