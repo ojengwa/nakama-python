@@ -12,6 +12,9 @@ async def test():
             json_body = await r.json()
             print(json_body)
 
+        ws = await session.ws_connect('http://httpbin.org/headers')
+        ws.close()
+
 
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
