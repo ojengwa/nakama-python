@@ -1,6 +1,6 @@
-from nakama.account.authenticate import Authenticate
-from nakama.account.link import Link
-from nakama.account.unlink import Unlink
+from .authenticate import Authenticate
+from .link import Link
+from .unlink import Unlink
 
 
 class Account():
