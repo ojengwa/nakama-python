@@ -19,9 +19,11 @@ async def test():
     socket = NakamaSocket(client)
     await socket.connect()
     data = {
+        'cid': '5',
         'match_create': {}
     }
-    data = json.dumps(data)
+    #data = json.dumps(data)
+    print('sending...')
     await socket.send(data)
     '''
     {
