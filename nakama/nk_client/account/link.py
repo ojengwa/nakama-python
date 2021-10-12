@@ -59,6 +59,7 @@ class Link():
     async def facebook(self, token, import_friends=None):
         params = {}
         if import_friends is not None:
+            # TO DO: sync or import???
             params['import'] = import_friends and 'true' or 'false'
 
         body = {
@@ -122,6 +123,7 @@ class Link():
         body = {
             'token': token
         }
+        # TO DO: also can import (sync?) friends
 
         headers = self.client.session.auth_header
 

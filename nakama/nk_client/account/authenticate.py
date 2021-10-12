@@ -99,6 +99,7 @@ class Authenticate():
         if username is not None:
             params['username'] = username
         if import_friends is not None:
+            # TO DO: sync or import???
             params['import'] = import_friends and 'true' or 'false'
 
         body = {
@@ -192,6 +193,7 @@ class Authenticate():
             params['create'] = create and 'true' or 'false'
         if username is not None:
             params['username'] = username
+        # TO DO: also can import (sync?) friends
 
         body = {
             'token': token
