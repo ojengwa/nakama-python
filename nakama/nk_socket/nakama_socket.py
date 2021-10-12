@@ -1,5 +1,7 @@
 import asyncio
 
+from .ws_helpers import WSRequestHandler
+
 from .handlers import Handlers
 from .channel import Channel
 from .match import Match
@@ -29,9 +31,14 @@ class NakamaSocket():
     def status(self):
         return self._status
 
+    @property
+    def request_handler(self):
+        return self._request_handler
+
     def __init__(self, client):
         self.client = client
 
+        self._request_handler = WSRequestHandler()
         self.websocket = None
         self.ws_listener_task = None
 
@@ -44,18 +51,17 @@ class NakamaSocket():
     async def _websocket_listener(self, ws):
         while True:
             if ws.closed:
-                await self.handlers.handle('disconnect', None)
+                await self.handlers.handle_event('disconnect', None)
                 await self.close()
                 break
 
             msg = await ws.receive_json()
-            print(msg)
             if msg.get('cid') is not None:
-                pass
-                # Если есть cid - значит, кто-то ждет ответа
+                cid = msg.pop('cid')
+                self.request_handler.handle_result(cid, msg)
             else:
-                pass
-                # Это обычное событие
+                for type, event in msg.items():
+                    await self.handlers.handle_event(type, event)
 
     async def connect(self, loop=None):
         assert self.client.session.token is not None, 'You must set session.token'

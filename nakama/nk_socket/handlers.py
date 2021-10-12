@@ -18,28 +18,30 @@ class Handlers():
         self.channel_presence_handler = self._empty_handler
         self.disconnect_handler = self._empty_handler
 
-    async def handle(self, type, event):
-        if type == 'notification':
-            await self.notification_handler(event)
+    async def handle_event(self, type, event):
+        if type == 'notifications':
+            # TO DO: maybe separate tasks for each ntf?
+            for ntf in event:
+                await self.notification_handler(ntf)
         elif type == 'match_data':
             event.data = event.data.encode()
             pad = len(event.data) % 4
             event.data += b"="*pad  # correct padding
             event.data = base64.b64decode(event.data)
             await self.match_data_handler(event)
-        elif type == 'match_presence':
+        elif type == 'match_presence_event':
             await self.match_presence_handler(event)
         elif type == 'matchmaker_matched':
             await self.matchmaker_matched_handler(event)
-        elif type == 'status_presence':
+        elif type == 'status_presence_event':
             await self.status_presence_handler(event)
-        elif type == 'stream_presence':
+        elif type == 'stream_presence_event':
             await self.stream_presence_handler(event)
         elif type == 'stream_data':
             await self.stream_data_handler(event)
         elif type == 'channel_message':
             await self.channel_message_handler(event)
-        elif type == 'channel_presence':
+        elif type == 'channel_presence_event':
             await self.channel_presence_handler(event)
         elif type == 'disconnect':
             await self.disconnect_handler(event)
